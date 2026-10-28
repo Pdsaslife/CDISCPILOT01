@@ -16,6 +16,7 @@ proc import datafile="/mnt/viya-share/data/CDISCPILOT01/raw/raw_dm.csv"
     getnames=yes;
 run;
 
+
 /* Character versions of source variables prevent numeric formatting issues */
 data work.dm_pre;
     length
@@ -63,7 +64,11 @@ data work.dm_pre;
     USUBJID = catx("-", STUDYID, strip(INV), SUBJID);
 
     /* Site identifier */
+    if vtype(SITEID) = "N" then
+    SITEID = strip(put(SITEID, best.));
+    else
     SITEID = strip(SITEID);
+
 
     /*
        Convert dates to ISO 8601.
