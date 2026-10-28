@@ -1,0 +1,128 @@
+1                                                          The SAS System                   Thursday, September 10, 2020 06:50:00 PM
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6 MBCS3170) 
+      Licensed to LSAF 5.2 19w43 with QC, Site 70068118.
+NOTE: This session is executing on the Linux 3.10.0-957.12.1.el7.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+      SAS/IML 15.1
+      SAS/QC 15.1
+
+NOTE: Additional host information:
+
+ Linux LIN X64 3.10.0-957.12.1.el7.x86_64 #1 SMP Wed Mar 20 11:34:37 UTC 2019 x86_64 Red Hat Enterprise Linux Server release 7.6 
+      (Maipo) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS Initialization used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+NOTE: The autoexec file, /sso/biconfig/940/Lev1/LSAFApp/WorkspaceServer/autoexec.sas, was executed at server initialization.
+1          options nofmterr;
+2          options dtreset;
+3          options locale=EN_US;
+4          %let _SDDUSR_=%bquote(prdesa1);
+5          %let _SASWS_ = %nrstr("/lsafshared/SASWorkspaces/.transient/Sync_repo_work.job-31d1df91-ce69-4377-ad3f-f4c5871fc185");
+6          %let _SASWS_ = %qsubstr(&_SASWS_, 2, %length(&_SASWS_) - 2);
+7          
+8          %let _SASUSRWS_ =
+8        ! %nrstr("/lsafshared/SASWorkspaces/.transient/Sync_repo_work.job-31d1df91-ce69-4377-ad3f-f4c5871fc185/Users/prdesa1");
+9          %let _SASUSRWS_ = %qsubstr(&_SASUSRWS_, 2, %length(&_SASUSRWS_) - 2);
+10         options nosource;
+
+NOTE: DATA statement used (Total process time):
+      real time           1.03 seconds
+      cpu time            0.02 seconds
+      
+
+2                                                          The SAS System                   Thursday, September 10, 2020 06:50:01 PM
+
+17         
+
+/**********************************************************************************************************************
+ * Submission Start: Sync_repo_work.sas
+ * Sep 10, 2020 18:50:02 GMT by prdesa1
+ *********************************************************************************************************************/
+3                                                          The SAS System                   Thursday, September 10, 2020 06:50:02 PM
+
+18         
+19         options nosyntaxcheck errorcheck=strict notes;
+20         
+21         
+22         ;*';*";*/;*);run;quit;
+23         *reset syscc macro variable;
+24         %let syscc=0;
+25         %let _SASFILEPATH_ = %nrstr("/Clinical
+25       ! Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.sas");
+26         %let _SASFILEPATH_ = %qsubstr(&_SASFILEPATH_, 2, %length(&_SASFILEPATH_) - 2);
+27         
+28         /********************************************************************************************************************/
+29         proc scaproc; record "&_SASWS_/.sessions/2/sca_1dc83269-b777-40dd-bb2f-6441caf28f0a.txt" EXPANDMACROS; run;
+
+NOTE: PROCEDURE SCAPROC used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+30         
+31         options nomprint;
+32         /********************************************************************************************************************/
+33         
+34         /* Macro Variables for Job Parameters */
+35         
+36         /********************************************************************************************************************/
+37         
+38         %lsaf_syncfiletoworkspace(lsaf_path=/Clinical
+38       ! Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_from_va/dm_dm_fixed.sas7bdat);
+
+
+NOTE: SAS Life Science Analytics Framework Macro: *  
+The repository item was synchronized to the workspace: /Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_from_va/
+dm_dm_fixed.sas7bdat.
+NOTE: SAS Life Science Analytics Framework Macro: *  lsaf_syncfiletoworkspace
+NOTE: SAS Life Science Analytics Framework Macro: *  _lsafMsg_= Success.
+NOTE: SAS Life Science Analytics Framework Macro: *  _lsafRC_= 0
+NOTE: DATA statement used (Total process time):
+      real time           2.12 seconds
+      cpu time            0.01 seconds
+      
+
+39         
+40         
+41         ;*';*";*/;*);run;quit;
+42         proc scaproc; write; run;
+NOTE: PROCEDURE SCAPROC used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+43         options nonotes;
+44         
+
+/**********************************************************************************************************************
+ * Submission End: Sync_repo_work.sas
+ * Sep 10, 2020 18:50:04 GMT
+ *********************************************************************************************************************/

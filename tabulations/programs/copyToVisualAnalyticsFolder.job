@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job releaseVersion="1.0" description="" log="../llm" lst="../llm" mnf="../llm">
+  <tasks>
+    <task path="./copyToVisualAnalyticsFolder.sas" />
+  </tasks>
+  <taskSpecs>
+    <inputSpec path="./copyToVisualAnalyticsFolder.sas" type="FILE" version="*" includeSubFolders="false" />
+  </taskSpecs>
+  <otherSpecs>
+    <inputSpec path="../sdtm_va/dm_dm.sas7bdat" type="FILE" version="*" includeSubFolders="false" />
+  </otherSpecs>
+  <outputPaths>
+    <outputPath path="../../../../../toVisualAnalytics" includeSubFolders="false" />
+  </outputPaths>
+  <outputSpec enableVersioningForNewFiles="false">
+    <versionType type="MAJOR" />
+  </outputSpec>
+  <parameters />
+</job>
+

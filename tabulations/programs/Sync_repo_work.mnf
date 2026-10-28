@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest version="2.1" type="PUBLISHED">
+  <job jobPath="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.job" jobName="Sync_repo_work.job" jobDescription="" jobVersion="1.0" uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.job?id=c792be59-dd67-4d5f-a859-7273c92e28de&amp;version=1.0" isVersioned="true" modDate="20200910143004EDT" syncVersion="1.0" />
+  <jobSubmission jobSubmissionId="f3172e13-3ea7-4643-aca7-08fc8ec77fdd" />
+  <tasks>
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.sas?id=0dc95257-2c96-4e42-861b-484e8a9f1978&amp;version=1.1" syncVersion="1.1" isVersioned="true" modDate="20200910143530EDT" state="SUCCESSFUL" info="" executionTime="2164" size="135" />
+  </tasks>
+  <inputs>
+    <ref name="lsaf_syncfiletoworkspace.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.sas" />
+    <ref name="lsaf_getproductname.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.sas" />
+  </inputs>
+  <outputs>
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.log?id=83f1906c-ec97-4e06-9394-f36acf3f82fe" isVersioned="false" modDate="20200910145004EDT" wasSynced="true" size="5512" />
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.lst?id=3eee1cf4-4585-465b-8d84-6b7100aaca83" isVersioned="false" modDate="20200910145004EDT" wasSynced="true" size="629" />
+  </outputs>
+  <outputFileSpec enableVersioningForNewFiles="false">
+    <versionType type="MAJOR" />
+  </outputFileSpec>
+  <log uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.log?id=83f1906c-ec97-4e06-9394-f36acf3f82fe" isVersioned="false" modDate="20200910145004EDT" wasSynced="true" />
+  <lst uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/Sync_repo_work.lst?id=3eee1cf4-4585-465b-8d84-6b7100aaca83" isVersioned="false" modDate="20200910145004EDT" wasSynced="true" />
+  <mnf />
+  <parameters />
+  <metrics>
+    <transferMetrics>
+      <transferMetric name="jobs" total="1" size="470" time="3" />
+      <transferMetric name="programs" total="1" size="135" time="2" />
+      <transferMetric name="inputs" total="0" size="0" time="0" />
+      <transferMetric name="referenced" total="0" size="0" time="0" />
+      <transferMetric name="outputs" total="2" size="6141" time="40" />
+    </transferMetrics>
+  </metrics>
+</manifest>
+

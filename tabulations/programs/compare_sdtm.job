@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job releaseVersion="1.0" description="" log="../llm" lst="../llm" mnf="../llm">
+  <tasks>
+    <task path="./compare_sdtm.sas" />
+  </tasks>
+  <taskSpecs>
+    <inputSpec path="./compare_sdtm.sas" type="FILE" version="*" includeSubFolders="false" />
+  </taskSpecs>
+  <otherSpecs>
+    <inputSpec path="../sdtm_from_va/dm_dm_fixed.sas7bdat" type="FILE" version="*" includeSubFolders="false" />
+    <inputSpec path="../sdtm_va/dm_dm.sas7bdat" type="FILE" version="*" includeSubFolders="false" />
+  </otherSpecs>
+  <outputPaths />
+  <outputSpec enableVersioningForNewFiles="true">
+    <versionType type="MAJOR" />
+  </outputSpec>
+  <parameters />
+</job>
+

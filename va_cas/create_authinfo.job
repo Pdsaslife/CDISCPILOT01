@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job releaseVersion="1.0" description="" log="./" lst="./" mnf="./">
+  <tasks>
+    <task path="./create_authinfo.sas" />
+  </tasks>
+  <taskSpecs>
+    <inputSpec path="./create_authinfo.sas" type="FILE" version="*" includeSubFolders="false" />
+  </taskSpecs>
+  <otherSpecs />
+  <outputPaths />
+  <outputSpec enableVersioningForNewFiles="false">
+    <versionType type="MAJOR" />
+  </outputSpec>
+  <parameters>
+    <parameter name="va_host" defaultValue="valsaftell" label="VA HostName" type="CHARACTER" />
+    <parameter name="va_userid" defaultValue="sajune" label="Userid" type="CHARACTER" />
+    <parameter name="va_password" label="Password" type="CHARACTER_MASKED" />
+  </parameters>
+</job>
+

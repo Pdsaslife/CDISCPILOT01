@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job releaseVersion="1.0" description="" log="./" lst="./" mnf="./">
+  <tasks>
+    <task path="./Sync_repo_work.sas" />
+  </tasks>
+  <taskSpecs>
+    <inputSpec path="./Sync_repo_work.sas" type="FILE" version="" includeSubFolders="false" />
+  </taskSpecs>
+  <otherSpecs />
+  <outputPaths />
+  <outputSpec enableVersioningForNewFiles="false">
+    <versionType type="MAJOR" />
+  </outputSpec>
+  <parameters />
+</job>
+

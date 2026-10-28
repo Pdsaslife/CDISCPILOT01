@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest version="2.1" type="PUBLISHED">
+  <job jobPath="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.job" jobName="run_sdtm_va.job" jobDescription="" uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.job?id=c5de9766-0577-4828-b87a-641a425442e6" isVersioned="false" modDate="20200909093111EDT" />
+  <jobSubmission jobSubmissionId="f7313442-d387-40ec-b186-63f632e9c492" />
+  <tasks>
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas?id=fcc91eea-b22f-48f4-9581-845c16860bca" isVersioned="false" modDate="20200909092942EDT" state="SUCCESSFUL" info="" executionTime="52889" size="1758" />
+  </tasks>
+  <inputs>
+    <ref name="lsaf_getjobparameters.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="lsaf_getproductname.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="lsaf_submitjob.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="cmpres.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/sasautos" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="left.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/sasautos" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="qtrim.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/sasautos" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="verify.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/sasautos" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="lsaf_validate_parameters_dataset.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="lsaf_validate_sasdataset.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="qcmpres.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/sasautos" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="qleft.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/sasautos" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+    <ref name="lsaf_getsubmissionstatus.sas" location="/sso/sfw/sas/940/SASFoundation/9.4/lsafapi/lsaf-sas-macro-2.3/sasmacros" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/run_sdtm_va.sas" />
+  </inputs>
+  <outputs>
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/run_sdtm_va.log?id=bcde1c5a-5506-4b86-b463-ed32af0d6662" isVersioned="false" modDate="20200909093756EDT" wasSynced="true" size="24021" />
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/run_sdtm_va.lst?id=71439fc2-9af9-4d0c-b4f6-cee0af26d40b" isVersioned="false" modDate="20200909093756EDT" wasSynced="true" size="12913" />
+  </outputs>
+  <outputFileSpec enableVersioningForNewFiles="false">
+    <versionType type="MAJOR" />
+  </outputFileSpec>
+  <log uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/run_sdtm_va.log?id=bcde1c5a-5506-4b86-b463-ed32af0d6662" isVersioned="false" modDate="20200909093756EDT" wasSynced="true" />
+  <lst uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/run_sdtm_va.lst?id=71439fc2-9af9-4d0c-b4f6-cee0af26d40b" isVersioned="false" modDate="20200909093756EDT" wasSynced="true" />
+  <mnf />
+  <parameters>
+    <parameter name="job_path" type="FILE" defaultValue="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job" label="Job Path" />
+    <parameter name="sleep_time" defaultValue="5" label="Sleep time (in seconds)" type="CHARACTER" />
+    <parameter name="run_count" defaultValue="5" label="Run Count" type="CHARACTER" />
+  </parameters>
+  <metrics>
+    <transferMetrics>
+      <transferMetric name="jobs" total="1" size="776" time="2" />
+      <transferMetric name="programs" total="1" size="1758" time="1" />
+      <transferMetric name="inputs" total="1" size="765" time="2" />
+      <transferMetric name="referenced" total="0" size="0" time="0" />
+      <transferMetric name="outputs" total="2" size="36934" time="288" />
+    </transferMetrics>
+  </metrics>
+</manifest>
+

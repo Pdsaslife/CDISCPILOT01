@@ -1,0 +1,1 @@
+%lsaf_syncfiletoworkspace(lsaf_path=/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_from_va/dm_dm_fixed.sas7bdat);

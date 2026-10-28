@@ -1,0 +1,115 @@
+
+/**********************************************************************************************************************
+ * Submission Start: run_sdtm_va.sas
+ * Sep 09, 2020 13:37:03 GMT by prdesa1
+ *********************************************************************************************************************/
+                                                           The SAS System              Wednesday, September  9, 2020 01:37:08 PM   1
+
+                                                                                                                              i
+                                                                                                                              n
+                                                                                                                              c
+                                                                                                                              l
+                                                                                                                              u
+                                                                                                                        d     d
+                                                                                                                        e  f  e
+                                                                                          j                             f  i  S
+                                                                                          o                             a  l  u
+                                                                                          b                             u  e  b
+                                             j                                            V                             l  V  F
+                                             o                                            e                             t  e  o
+                                             b                                            r            l                V  r  l  v
+                                             P                                            s    n       a         t      a  s  d  a
+ O                                           a                                            i    a       b         y      l  i  e  l
+ b                                           t                                            o    m       e         p      u  o  r  u
+ s                                           h                                            n    e       l         e      e  n  s  e
+
+ 1  /Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job     count  Counter  CHARACTER  1     0  1
+                                                           The SAS System              Wednesday, September  9, 2020 01:37:17 PM   2
+
+                                                                                                                              i
+                                                                                                                              n
+                                                                                                                              c
+                                                                                                                              l
+                                                                                                                              u
+                                                                                                                        d     d
+                                                                                                                        e  f  e
+                                                                                          j                             f  i  S
+                                                                                          o                             a  l  u
+                                                                                          b                             u  e  b
+                                             j                                            V                             l  V  F
+                                             o                                            e                             t  e  o
+                                             b                                            r            l                V  r  l  v
+                                             P                                            s    n       a         t      a  s  d  a
+ O                                           a                                            i    a       b         y      l  i  e  l
+ b                                           t                                            o    m       e         p      u  o  r  u
+ s                                           h                                            n    e       l         e      e  n  s  e
+
+ 1  /Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job     count  Counter  CHARACTER  1     0  2
+                                                           The SAS System              Wednesday, September  9, 2020 01:37:27 PM   3
+
+                                                                                                                              i
+                                                                                                                              n
+                                                                                                                              c
+                                                                                                                              l
+                                                                                                                              u
+                                                                                                                        d     d
+                                                                                                                        e  f  e
+                                                                                          j                             f  i  S
+                                                                                          o                             a  l  u
+                                                                                          b                             u  e  b
+                                             j                                            V                             l  V  F
+                                             o                                            e                             t  e  o
+                                             b                                            r            l                V  r  l  v
+                                             P                                            s    n       a         t      a  s  d  a
+ O                                           a                                            i    a       b         y      l  i  e  l
+ b                                           t                                            o    m       e         p      u  o  r  u
+ s                                           h                                            n    e       l         e      e  n  s  e
+
+ 1  /Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job     count  Counter  CHARACTER  1     0  3
+                                                           The SAS System              Wednesday, September  9, 2020 01:37:36 PM   4
+
+                                                                                                                              i
+                                                                                                                              n
+                                                                                                                              c
+                                                                                                                              l
+                                                                                                                              u
+                                                                                                                        d     d
+                                                                                                                        e  f  e
+                                                                                          j                             f  i  S
+                                                                                          o                             a  l  u
+                                                                                          b                             u  e  b
+                                             j                                            V                             l  V  F
+                                             o                                            e                             t  e  o
+                                             b                                            r            l                V  r  l  v
+                                             P                                            s    n       a         t      a  s  d  a
+ O                                           a                                            i    a       b         y      l  i  e  l
+ b                                           t                                            o    m       e         p      u  o  r  u
+ s                                           h                                            n    e       l         e      e  n  s  e
+
+ 1  /Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job     count  Counter  CHARACTER  1     0  4
+                                                           The SAS System              Wednesday, September  9, 2020 01:37:46 PM   5
+
+                                                                                                                              i
+                                                                                                                              n
+                                                                                                                              c
+                                                                                                                              l
+                                                                                                                              u
+                                                                                                                        d     d
+                                                                                                                        e  f  e
+                                                                                          j                             f  i  S
+                                                                                          o                             a  l  u
+                                                                                          b                             u  e  b
+                                             j                                            V                             l  V  F
+                                             o                                            e                             t  e  o
+                                             b                                            r            l                V  r  l  v
+                                             P                                            s    n       a         t      a  s  d  a
+ O                                           a                                            i    a       b         y      l  i  e  l
+ b                                           t                                            o    m       e         p      u  o  r  u
+ s                                           h                                            n    e       l         e      e  n  s  e
+
+ 1  /Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job     count  Counter  CHARACTER  1     0  5
+
+/**********************************************************************************************************************
+ * Submission End: run_sdtm_va.sas
+ * Sep 09, 2020 13:37:55 GMT
+ *********************************************************************************************************************/

@@ -1,0 +1,37 @@
+
+/**********************************************************************************************************************
+ * Submission Start: compare_sdtm.sas
+ * Sep 25, 2020 16:38:18 GMT by bebocc
+ *********************************************************************************************************************/
+                                                           The SAS System                 Friday, September 25, 2020 04:38:18 PM   1
+
+                                                       The COMPARE Procedure
+                                           Comparison of SDTM_OD.DM_DM with WORK.SUB_SET
+                                                           (Method=EXACT)
+
+NOTE: Data set SDTM_OD.DM_DM contains 296 observations not in WORK.SUB_SET.
+NOTE: Values of the following 1 variables compare unequal: SEX^=SEX
+
+
+                                               Value Comparison Results for Variables
+
+                                     __________________________________________________________
+                                                ||  Sex
+                                                ||  Base Value           Compare Value
+                                            Obs ||  SEX                   SEX
+                                      ________  ||  _                     _
+                                                ||
+                                             1  ||  F                     M
+                                             2  ||  M                     F
+                                             3  ||  M                     F
+                                             4  ||  M
+                                             5  ||  F
+                                             6  ||  F                     M
+                                             7  ||  F                     M
+                                             8  ||  M                     F
+                                     __________________________________________________________
+
+/**********************************************************************************************************************
+ * Submission End: compare_sdtm.sas
+ * Sep 25, 2020 16:38:18 GMT
+ *********************************************************************************************************************/

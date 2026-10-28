@@ -1,0 +1,453 @@
+1                                                          The SAS System                  Wednesday, September  9, 2020 01:37:00 PM
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6 MBCS3170) 
+      Licensed to LSAF 5.2 19w43 with QC, Site 70068118.
+NOTE: This session is executing on the Linux 3.10.0-957.12.1.el7.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+      SAS/IML 15.1
+      SAS/QC 15.1
+
+NOTE: Additional host information:
+
+ Linux LIN X64 3.10.0-957.12.1.el7.x86_64 #1 SMP Wed Mar 20 11:34:37 UTC 2019 x86_64 Red Hat Enterprise Linux Server release 7.6 
+      (Maipo) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS Initialization used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+NOTE: The autoexec file, /sso/biconfig/940/Lev1/LSAFApp/WorkspaceServer/autoexec.sas, was executed at server initialization.
+1          options nofmterr;
+2          options dtreset;
+3          options locale=EN_US;
+4          %let _SDDUSR_=%bquote(prdesa1);
+5          %let _SASWS_ = %nrstr("/lsafshared/SASWorkspaces/.transient/sdtm_va.job-ab4e41ca-1efc-4026-acc1-3e9aec01d342");
+6          %let _SASWS_ = %qsubstr(&_SASWS_, 2, %length(&_SASWS_) - 2);
+7          
+8          %let _SASUSRWS_ =
+8        ! %nrstr("/lsafshared/SASWorkspaces/.transient/sdtm_va.job-ab4e41ca-1efc-4026-acc1-3e9aec01d342/Users/prdesa1");
+9          %let _SASUSRWS_ = %qsubstr(&_SASUSRWS_, 2, %length(&_SASUSRWS_) - 2);
+10         options nosource;
+
+NOTE: DATA statement used (Total process time):
+      real time           1.02 seconds
+      cpu time            0.00 seconds
+      
+
+2                                                          The SAS System                  Wednesday, September  9, 2020 01:37:47 PM
+
+17         
+
+/**********************************************************************************************************************
+ * Submission Start: sdtm_va.sas
+ * Sep 09, 2020 13:37:47 GMT by prdesa1
+ *********************************************************************************************************************/
+3                                                          The SAS System                  Wednesday, September  9, 2020 01:37:48 PM
+
+18         
+19         options nosyntaxcheck errorcheck=strict notes;
+20         
+21         
+22         ;*';*";*/;*);run;quit;
+23         *reset syscc macro variable;
+24         %let syscc=0;
+25         %let _SASFILEPATH_ = %nrstr("/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.sas");
+26         %let _SASFILEPATH_ = %qsubstr(&_SASFILEPATH_, 2, %length(&_SASFILEPATH_) - 2);
+27         
+28         /********************************************************************************************************************/
+29         proc scaproc; record "&_SASWS_/.sessions/3/sca_49db3bab-2327-4568-8572-85742a497894.txt" EXPANDMACROS; run;
+
+NOTE: PROCEDURE SCAPROC used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+30         
+31         options nomprint;
+32         /********************************************************************************************************************/
+33         
+34         /* Macro Variables for Job Parameters */
+35         %let count=5;
+36         
+37         /********************************************************************************************************************/
+38         
+39         /***********************************************************************************************************************
+40         Purpose: Create a Large & Flat dataset for LB VS EG AE CM for VA 6.2
+41         
+42         Date: 08/7/13
+43         
+44         By SAS PGM  : Pritesh Desai
+45         Statistician: Mike Henderson
+46         
+47         I/P: SDTM dataset DM AE LB VS EG CM
+48         
+49         Note:
+50         		VS  o	Make VS_Flat1  still multiple records for tpt (pre & post dose)  only value (n) and hi & lo  not units
+51         			o	Make VS_Flat2  one record per subject
+52         		LB  o	Make LB_Flat  one record per subject and visitnum  - use SDTM column name as prefix  dont keep unit
+53         		EG  o	Make EG_Flat  one record per subject and visitnum  only rows with n  dont keep unit
+54         		DM  o	Keep as is
+55         		VS+DM+AE Summary (see below)
+56         		EG+DM+AE Summary (see below)
+57         		LB+DM+AE Summary (see below)
+58         		LB_Flat+DM+EG_Flat+VS_Flat2+
+59         			o	AE Summary using AE
+60         					Two parts
+61         					1	Overall
+62         							o	Total_AE
+63         							o	Max_AESEV
+64         							o	Max_AESER
+65         					2	Up to current visit date
+66         							o	Current_Total_AE
+67         							o	Current_Max_AESEV
+68         							o	Current_Max_AESER
+69         
+4                                                          The SAS System                  Wednesday, September  9, 2020 01:37:48 PM
+
+70         1	Create a DM_DM that merges the LAT, LONG, and ISONAME from mapsgfk.world_cities by averaging LAT and LONG
+71         		o	Ensure that all DM.COUNTRY values are represented by ISOALPHA3
+72         		o	This will allow geocoding of data from all datasets even in reporting
+73         2	Create new versions of the SDTM that include the DM data so that they get the geocoding and arm info
+74         		o	LB_DM o	AE_DM o	VS_DM o	EG_DM o	CM_DM
+75         3	Let the new DM with geocoding carry through all other derived flat and combo files
+76         
+77         O/P	Load list: DM_DM 	LB_DM AE_DM VS_DM EG_DM CM_DM AE_FLAT ALL_FLAT EG_DM_AE
+78         			 EG_FLAT 	LB_DM_AE 	LB_FLAT  VS_DM_AE VS_FLAT1 	VS_FLAT2
+79         
+80         *************************************************************************************************************************
+80       ! **/
+81         %global count;
+82         
+83         %macro chkParam();
+84             %if %length(&count)<=0 %then %let count=%str(1);
+85         %mend chkParam;
+86         
+87         %chkParam();
+88         
+89         %macro sdtm_va(count=);
+90         
+91         options validvarname=v7 noquotelenmax;
+92         
+93         libname sdtm "&_SASWS_/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_datasets";
+94         libname sdtm_va "&_SASWS_/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_va";
+95         
+96         /*---------------------------------------------------*/
+97         		/*PLEASE DO NOT DELETE THIS PIECE*/
+98         		/*IT IS USED FOR VALIDATION PURPOSE*/
+99         
+100        		%macro chk_data(a=);
+101        
+102        			data &a.;
+103        				set sdtm.&a.;
+104        				length mod_user $100. mod_comments $5000. mod_Recorded_Added $3. mod_Comments_approved $3. mod_date $15. mod_orig_rec
+104      !  3.;
+105        				length review_flag 3. review_text $200. ;
+106        				label
+107        					mod_user				='Name'
+108        					mod_comments			='Add records for comments'
+109        					mod_recorded_Added		='Yes/No Flag(for new record)'
+110        					mod_comments_approved	='Yes/No Flag(for approved record)'
+111        					mod_date				='Today date & time'
+112        					mod_orig_rec			='Original record(use 0 and 1)'
+113        					review_flag			='Demographic review flag number'
+114        					review_text			='Demographic review flag description'
+115        				 ;
+116        				 mod_user='';
+117        				 mod_comments='';
+118        				 mod_recorded_Added='';
+119        				 mod_comments_approved='';
+120        				 mod_date='';
+121        				 mod_orig_rec=0;
+122        				 review_flag=0;
+123        				 review_text='No issues found';
+124        				
+125        				*where usubjid='770MS405/901-005';	
+5                                                          The SAS System                  Wednesday, September  9, 2020 01:37:48 PM
+
+126        				*Create Issues in Demographic;
+127        				%if &a.=dm %then
+128        				%do;
+129        				  %if &count = 1 %then %do;
+130        				  	if usubjid = '01-701-1211' then dthdtc='';
+131        					if usubjid = '01-704-1445' then dthfl='';
+132        					if usubjid = '01-715-1319' then age=122 ;
+133        					if usubjid = '01-715-1085' then arm='';
+134        					if usubjid = '01-718-1371' then age=10 ;
+135        					if usubjid = '01-701-1188' then sex='';
+136        					if usubjid = '01-708-1013' then ageu='MONTHS';
+137        					if usubjid = '01-709-1238' and upcase(armcd) ne 'SCRNFAIL' then RFSTDTC='';
+138        					if usubjid = '01-707-1037' then RFSTDTC='2013';
+139        					if usubjid = '01-710-1002' then SEX='';
+140        				  %end;
+141        				  %else %if &count = 2 %then %do;
+142        				  	*if usubjid = '01-701-1211' then dthdtc='';
+143        					*if usubjid = '01-704-1445' then dthfl='';
+144        					if usubjid = '01-715-1319' then age=122 ;
+145        					if usubjid = '01-715-1085' then arm='';
+146        					if usubjid = '01-718-1371' then age=10 ;
+147        					if usubjid = '01-701-1188' then sex='';
+148        					if usubjid = '01-708-1013' then ageu='MONTHS';
+149        					if usubjid = '01-709-1238' and upcase(armcd) ne 'SCRNFAIL' then RFSTDTC='';
+150        					if usubjid = '01-707-1037' then RFSTDTC='2013';
+151        					if usubjid = '01-710-1002' then SEX='';
+152        				  %end;
+153        				  %else %if &count = 3 %then %do;
+154        				  	*if usubjid = '01-701-1211' then dthdtc='';
+155        					*if usubjid = '01-704-1445' then dthfl='';
+156        					*if usubjid = '01-715-1319' then age=122 ;
+157        					*if usubjid = '01-715-1085' then arm='';
+158        					if usubjid = '01-718-1371' then age=10 ;
+159        					if usubjid = '01-701-1188' then sex='';
+160        					if usubjid = '01-708-1013' then ageu='MONTHS';
+161        					if usubjid = '01-709-1238' and upcase(armcd) ne 'SCRNFAIL' then RFSTDTC='';
+162        					if usubjid = '01-707-1037' then RFSTDTC='2013';
+163        					if usubjid = '01-710-1002' then SEX='';
+164        				  %end;
+165        				  %else %if &count = 4 %then %do;
+166        				  	*if usubjid = '01-701-1211' then dthdtc='';
+167        					*if usubjid = '01-704-1445' then dthfl='';
+168        					*if usubjid = '01-715-1319' then age=122 ;
+169        					*if usubjid = '01-715-1085' then arm='';
+170        					*if usubjid = '01-718-1371' then age=10 ;
+171        					*if usubjid = '01-701-1188' then sex='';
+172        					if usubjid = '01-708-1013' then ageu='MONTHS';
+173        					if usubjid = '01-709-1238' and upcase(armcd) ne 'SCRNFAIL' then RFSTDTC='';
+174        					if usubjid = '01-707-1037' then RFSTDTC='2013';
+175        					if usubjid = '01-710-1002' then SEX='';
+176        				  %end;
+177        				  %else %if &count = 5 %then %do;
+178        				  	*if usubjid = '01-701-1211' then dthdtc='';
+179        					*if usubjid = '01-704-1445' then dthfl='';
+180        					*if usubjid = '01-715-1319' then age=122 ;
+181        					*if usubjid = '01-715-1085' then arm='';
+182        					*if usubjid = '01-718-1371' then age=10 ;
+183        					*if usubjid = '01-701-1188' then sex='';
+6                                                          The SAS System                  Wednesday, September  9, 2020 01:37:48 PM
+
+184        					*if usubjid = '01-708-1013' then ageu='MONTHS';
+185        					*if usubjid = '01-709-1238' and upcase(armcd) ne 'SCRNFAIL' then RFSTDTC='';
+186        					*if usubjid = '01-707-1037' then RFSTDTC='2013';
+187        					*if usubjid = '01-710-1002' then SEX='';
+188        				  %end;
+189        
+190        			
+191        													
+192        				%end;
+193        				*Create review_flag and review_text in demogrpahic;
+194        				%if &a.=dm %then
+195        				%do;
+196        					if dthfl ne '' and dthdtc ='' 		then do; review_flag=1; review_text='If Deathflag is not blank then Death date
+196      ! cannont be blank'; end;
+197        					if dthdtc ne '' and dthfl ='' 		then do; review_flag=2; review_text='If Death Date is not blank than Death date
+197      ! cannot be blank'; end;
+198        					if age gt 120 						then do; review_flag=3; review_text='Age cannot be greater than 120 Years'; end;
+199        					if age le 10 						then do; review_flag=4; review_text='Per Alzheimer Study Age cannot be less than 50 years'; end;
+200        					if arm = '' 						then do; review_flag=5; review_text='Description of planned arm cannot be blank'; end;
+201        					if sex = '' 						then do; review_flag=6; review_text='Gender cannot be blank' ; end ;
+202        					if compress(ageu) ne 'YEARS'			then do; review_flag=7; review_text='Age units must be in Years' ; end;
+203        					if armcd ne 'Scrnfail' & RFSTDTC='' 	then do; review_flag=8; review_text='Reference start date cannot be blank for
+203      ! randmoized subjects';end;
+204        					if compress(armcd) ne 'Scrnfail' & compress(length(rfstdtc)) le 8 then do; review_flag=9; review_text='Reference
+204      ! start date cannot have partial values'; end;
+205        													
+206        				%end;				
+207        				run;
+208        				
+209        			proc sort data=&a.;
+210        				 by usubjid ;
+211        				 run;
+212        
+213        		%mend chk_data;
+214        		%chk_data(a=dm);	
+215        
+216        /*---------------------------------------------------*/
+217        
+218        /* proc freq data=dm; */
+219        /* 	tables review_flag*review_text /list; */
+220        /* 	run; */
+221        
+222        ************************** LAT, LONG, and ISONAME from mapsgfk.world_cities by averaging LAT and
+222      ! LONG*******************************************;
+223        proc sql;
+224        	 create table world_cities as
+225        	 select isoname, long, lat, isoalpha3,
+226        			mean(long) as avg_long,
+227        			mean(lat) as avg_lat
+228        	 from mapsgfk.world_cities
+229        	 group by isoname
+230        	 order by isoname;
+231        	quit;
+232        
+233        proc sort data=world_cities out=country(drop=long lat rename=(avg_long=long avg_lat=lat)) nodupkey; by isoalpha3; run;
+234        
+235        ************************** Create xx_DM files to create flat files
+235      ! ****************************************************************************;
+7                                                          The SAS System                  Wednesday, September  9, 2020 01:37:48 PM
+
+236        
+237        proc sql;
+238        	create table dm_dm(drop=isoalpha3) as
+239        	select *
+240        		   ,input(scan(rfstdtc,1,'T'), yymmdd10.) as rfstdt format=date9.
+241        		   ,input(scan(rfendtc,1,'T'), yymmdd10.) as rfendt format=date9.
+242        	from dm  left join country on dm.country=country.isoalpha3
+243        	order by usubjid;
+244        	quit;
+245        
+246        	
+247        	
+248        	%let count=%eval(&count * 50);
+249        	
+250        	%put <<&count>>;
+251        	
+252        	data dm_dm;
+253            *set dm_dm(obs=&count);
+254               set dm_dm;
+255            run;
+256        
+257            proc freq data=dm_dm;
+258        	tables review_flag*review_text /list;
+259        	run;
+260        	
+261        	data sdtm_va.dm_dm;
+262              set dm_dm;
+263            run;
+264        
+265        %mend sdtm_va;
+266        
+267        %sdtm_va(count=&count);
+NOTE: Libref SDTM was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /lsafshared/SASWorkspaces/.transient/sdtm_va.job-ab4e41ca-1efc-4026-acc1-3e9aec01d342/Clinical 
+      Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_datasets
+NOTE: Libref SDTM_VA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /lsafshared/SASWorkspaces/.transient/sdtm_va.job-ab4e41ca-1efc-4026-acc1-3e9aec01d342/Clinical 
+      Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_va
+NOTE: Data file SDTM.DM.DATA is in a format that is native to another host, or the file encoding does not match the session 
+      encoding. Cross Environment Data Access will be used, which might require additional CPU resources and might reduce 
+      performance.
+
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+      267:131   
+NOTE: Character values have been converted to numeric values at the places given by: (Line):(Column).
+      267:122   
+NOTE: There were 306 observations read from the data set SDTM.DM.
+NOTE: The data set WORK.DM has 306 observations and 33 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+NOTE: Data file SDTM.DM.DATA is in a format that is native to another host, or the file encoding does not match the session 
+      encoding. Cross Environment Data Access will be used, which might require additional CPU resources and might reduce 
+      performance.
+
+8                                                          The SAS System                  Wednesday, September  9, 2020 01:37:48 PM
+
+
+NOTE: There were 306 observations read from the data set WORK.DM.
+NOTE: The data set WORK.DM has 306 observations and 33 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: The map data sets in library MAPSGFK are based on the digital maps from GfK GeoMarketing and are covered by their Copyright. 
+      For additional information, see http://support.sas.com/mapsonline/gfklicense.
+NOTE: The query requires remerging summary statistics back with the original data.
+NOTE: Table WORK.WORLD_CITIES created, with 215441 rows and 6 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.25 seconds
+      cpu time            0.35 seconds
+      
+
+
+NOTE: There were 215441 observations read from the data set WORK.WORLD_CITIES.
+NOTE: 215236 observations with duplicate key values were deleted.
+NOTE: The data set WORK.COUNTRY has 205 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.08 seconds
+      
+
+NOTE: Table WORK.DM_DM created, with 306 rows and 38 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+<<250>>
+
+NOTE: There were 306 observations read from the data set WORK.DM_DM.
+NOTE: The data set WORK.DM_DM has 306 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: There were 306 observations read from the data set WORK.DM_DM.
+NOTE: The PROCEDURE FREQ printed page 1.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: There were 306 observations read from the data set WORK.DM_DM.
+NOTE: The data set SDTM_VA.DM_DM has 306 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+9                                                          The SAS System                  Wednesday, September  9, 2020 01:37:48 PM
+
+
+268        
+269        %symdel count / nowarn;
+270        
+271        	
+272        
+273        
+274        
+275        ;*';*";*/;*);run;quit;
+276        proc scaproc; write; run;
+
+NOTE: PROCEDURE SCAPROC used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+277        options nonotes;
+278        
+
+/**********************************************************************************************************************
+ * Submission End: sdtm_va.sas
+ * Sep 09, 2020 13:37:48 GMT
+ *********************************************************************************************************************/

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest version="2.1" type="PUBLISHED">
+  <job jobPath="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job" jobName="sdtm_va.job" jobDescription="" uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.job?id=a8e8e59a-fdaa-4a06-a91f-478c9ab99cc6" isVersioned="false" modDate="20200909092140EDT" />
+  <jobSubmission jobSubmissionId="8f8db75d-e14b-4b6e-a7f9-424a994016d4" />
+  <tasks>
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.sas?id=19aa127e-614e-4550-8e1c-1582d6e87ace" isVersioned="false" modDate="20200909092140EDT" state="SUCCESSFUL" info="" executionTime="480" size="8806" />
+  </tasks>
+  <inputs>
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_datasets/dm.sas7bdat?id=e506999e-3174-41d0-b2a3-291f423ab4ed&amp;version=1.1" isVersioned="true" modDate="20200902115012EDT" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.sas" syncVersion="1.1" size="115712" />
+    <ref name="world_cities.sas7bdat" location="/sso/sfw/sas/940/SASFoundation/9.4/mapsgfk" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.sas" />
+    <ref name="world_cities.sas7bndx" location="/sso/sfw/sas/940/SASFoundation/9.4/mapsgfk" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.sas" />
+  </inputs>
+  <outputs>
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/sdtm_va.log?id=f1623f08-1279-412a-b32f-4197557286e1&amp;version=5.0" isVersioned="true" modDate="20200909093748EDT" wasSynced="true" syncVersion="5.0" size="20735" />
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/sdtm_va.lst?id=7afc446f-bd0c-4135-b9dd-b2c8d2a37a5d&amp;version=5.0" isVersioned="true" modDate="20200909093748EDT" wasSynced="true" syncVersion="5.0" size="1258" />
+    <file uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/sdtm_va/dm_dm.sas7bdat?id=869d358d-115d-41f1-a80b-f1f35b0d66eb&amp;version=6.0" isVersioned="true" modDate="20200909093748EDT" wasSynced="true" referencingSASFile="/Clinical Development/VA_Data_Exchange/CDISCPILOT01/tabulations/programs/sdtm_va.sas" syncVersion="6.0" size="1966080" />
+  </outputs>
+  <outputFileSpec enableVersioningForNewFiles="true">
+    <versionType type="MAJOR" />
+  </outputFileSpec>
+  <log uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/sdtm_va.log?id=f1623f08-1279-412a-b32f-4197557286e1&amp;version=5.0" isVersioned="true" modDate="20200909093748EDT" syncVersion="5.0" wasSynced="true" />
+  <lst uri="sdd:///Clinical%20Development/VA_Data_Exchange/CDISCPILOT01/tabulations/llm/sdtm_va.lst?id=7afc446f-bd0c-4135-b9dd-b2c8d2a37a5d&amp;version=5.0" isVersioned="true" modDate="20200909093748EDT" syncVersion="5.0" wasSynced="true" />
+  <mnf />
+  <parameters>
+    <parameter name="count" defaultValue="5" label="Counter" type="CHARACTER" />
+  </parameters>
+  <metrics>
+    <transferMetrics>
+      <transferMetric name="jobs" total="1" size="765" time="2" />
+      <transferMetric name="programs" total="1" size="8806" time="1" />
+      <transferMetric name="inputs" total="1" size="115712" time="2" />
+      <transferMetric name="referenced" total="1" size="115712" time="2" />
+      <transferMetric name="outputs" total="3" size="1988073" time="107" />
+    </transferMetrics>
+  </metrics>
+</manifest>
+
